@@ -1,0 +1,28 @@
+﻿<Window x:Class="lab14.AddSaleWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:lab14"
+        mc:Ignorable="d"
+        Title="AddSaleWindow" Height="300" Width="300" ResizeMode="NoResize">
+    <Grid>
+        <ListBox x:Name="listBox" HorizontalAlignment="Left" Height="137" Margin="26,72,0,0" VerticalAlignment="Top" Width="241">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid Margin="3">
+                        <TextBlock FontWeight="Bold" Text="{Binding Path= Name}"/>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <Label x:Name="label" Content="Customer:" HorizontalAlignment="Left" Margin="17,13,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="23" Margin="86,13,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="181"/>
+        <Button x:Name="add" Click="Add_OnClick" Content="Add" HorizontalAlignment="Left" Margin="39,241,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="cancel" Click="Cancel_OnClick" Content="Cancel" HorizontalAlignment="Left" Margin="178,241,0,0" VerticalAlignment="Top" Width="75"/>
+        <Label x:Name="label_Copy" Content="Count:" HorizontalAlignment="Left" Margin="17,41,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="count" Text="1" HorizontalAlignment="Left" Height="23" Margin="86,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="181" PreviewTextInput="PreviewTextInput"/>
+        <Label x:Name="error" Content="Fill all fiels!" HorizontalAlignment="Left" Margin="48,214,0,0" VerticalAlignment="Top" Width="205" Foreground="#FFFF0202" Visibility="Collapsed"/>
+
+    </Grid>
+</Window>

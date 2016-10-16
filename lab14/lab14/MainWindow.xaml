@@ -1,0 +1,70 @@
+﻿<Window x:Class="lab14.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:lab14"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="400" Width="600" ResizeMode="NoResize">
+    <Grid>
+        <Menu x:Name="menu" HorizontalAlignment="Left" Height="21" VerticalAlignment="Top" Width="594">
+            <MenuItem x:Name="MenuLogin" Header="Login" Click="Login_OnClick"></MenuItem>
+            <MenuItem x:Name="MenuLogout" Header="Logout" Click="Logout_OnClick" Visibility="Collapsed"></MenuItem>
+            <MenuItem x:Name="MenuSaleAdd" Header="Add sale" Click="MenuSaleAdd_OnClick" Visibility="Collapsed"></MenuItem>
+            <MenuItem Header="Exit" Click="Exit_OnClick"></MenuItem>
+        </Menu>
+        <TabControl Margin="0,21,0,0" SelectionChanged="Selector_OnSelectionChanged">
+            <TabItem Header="Resources">
+                <DataGrid x:Name="resourcesGrid" Margin="0,0,0,0" IsSynchronizedWithCurrentItem="True" AutoGenerateColumns="False" AddingNewItem="resourcesGrid_AddingNewItem" CellEditEnding="resourcesGrid_CellEditEnding">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Id" IsReadOnly="True" Binding="{Binding Path=Id}" Width="30" />
+                        <DataGridTextColumn Header="Name" Binding="{Binding Path=Name}" Width="150" />
+                        <DataGridTextColumn Header="Using in" IsReadOnly="True" Binding="{Binding Path=GoodsList}" Width="200" />
+                        <DataGridTemplateColumn x:Name="ActionsColumn"  Header="Actions" Width="100">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Click="RemoveResource_OnClick">Delete</Button>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+            <TabItem Header="Goods">
+                <DataGrid x:Name="goodsGrid" Margin="0,0,0,0" IsSynchronizedWithCurrentItem="True" AutoGenerateColumns="False" AddingNewItem="GoodsGrid_OnAddingNewItem" CellEditEnding="goodsGrid_CellEditEnding">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Id" IsReadOnly="True" Binding="{Binding Path=Id}" Width="20" />
+                        <DataGridTextColumn Header="Name" Binding="{Binding Path=Name}" Width="150" />
+                        <DataGridTextColumn Header="Resources" IsReadOnly="True" Binding="{Binding Path=ResourcesList}" Width="200" />
+                        <DataGridTemplateColumn x:Name="GoodsActionsColumn"  Header="Actions" Width="200" >
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Grid>
+                                        <Button Click="SelectResource_OnClick" Margin="0,0,100,0">Select resources</Button>
+                                        <Button Click="RemoveGood_OnClick" Margin="100,0,0,0">Delete</Button>
+                                    </Grid>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+            <TabItem Header="Sales">
+                <DataGrid x:Name="salesesGrid" CanUserAddRows="False" CanUserDeleteRows="True" Margin="0,0,0,0" IsSynchronizedWithCurrentItem="True" AutoGenerateColumns="False" AddingNewItem="SalesGrid_OnAddingNewItem" CellEditEnding="SalesGrid_CellEditEnding">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Customer name"  Binding="{Binding Path= CustomerName}" Width="150" />
+                        <DataGridTextColumn Header="Goods" IsReadOnly="True" Binding="{Binding Path=GoodName}" Width="150" />
+                        <DataGridTextColumn Header="Count" Binding="{Binding Path=Count}" Width="50" />
+                        <DataGridTemplateColumn x:Name="SalesesActionsColumn"  Header="Actions" Width="100" >
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                     <Button Click="RemoveSales_OnClick">Delete</Button>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
