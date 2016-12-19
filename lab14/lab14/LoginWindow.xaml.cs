@@ -23,6 +23,15 @@ namespace lab14
         {
             if (Login.Text.Equals("admin") && Password.Password.Equals("admin"))
             {
+                MainWindow.isLoged = true;
+                MainWindow.isAdmin = true;
+                DialogResult = true;
+                Close();
+            }
+            if (Login.Text.Equals("user") && Password.Password.Equals("user"))
+            {
+                MainWindow.isLoged = true;
+                MainWindow.isAdmin = false;
                 DialogResult = true;
                 Close();
             }

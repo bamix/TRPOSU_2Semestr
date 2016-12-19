@@ -8,7 +8,8 @@ namespace lab14
 {
     public partial class MainWindow : Window
     {
-        private static bool isAdmin;
+        public static bool isAdmin { get; set; }
+        public static bool isLoged { get; set; }
         private List<Resource> Resources;
         private List<Good> Goods;
         private List<Sales> Saleses;
@@ -65,7 +66,13 @@ namespace lab14
 
         private void Login()
         {
-            isAdmin = true;
+            resourcesGrid.Visibility = Visibility.Visible;
+            goodsGrid.Visibility = Visibility.Visible;
+            salesesGrid.Visibility = Visibility.Visible;
+            if (!isAdmin)
+            {
+                return;
+            }
             ActionsColumn.Visibility = Visibility.Visible;
             GoodsActionsColumn.Visibility = Visibility.Visible;
             SalesesActionsColumn.Visibility = Visibility.Visible;
@@ -79,6 +86,10 @@ namespace lab14
         private void Logout()
         {
             isAdmin = false;
+            isLoged = false;
+            resourcesGrid.Visibility = Visibility.Hidden;
+            goodsGrid.Visibility = Visibility.Hidden;
+            salesesGrid.Visibility = Visibility.Hidden;
             ActionsColumn.Visibility = Visibility.Collapsed;
             GoodsActionsColumn.Visibility = Visibility.Collapsed;
             SalesesActionsColumn.Visibility = Visibility.Collapsed;
